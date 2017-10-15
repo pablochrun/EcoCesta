@@ -3,7 +3,7 @@
     package="ecoceseta.com.pablo.ecocesta">
 
     <application
-        android:name=".MyApplication"
+        android:name="com.pablo.ecocesta.application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

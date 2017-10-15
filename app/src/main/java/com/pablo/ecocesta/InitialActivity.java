@@ -1,7 +1,9 @@
-package ecoceseta.com.pablo.ecocesta;
+package com.pablo.ecocesta;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import ecoceseta.com.pablo.ecocesta.R;
 
 public class InitialActivity extends AppCompatActivity {
 

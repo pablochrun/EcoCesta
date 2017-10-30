@@ -1,13 +1,13 @@
 package com.pablo.ecocesta.entity;
 
+import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.List;
-import org.greenrobot.greendao.DaoException;
 
 /**
  * Created by irene on 15/10/2017.
@@ -25,6 +25,7 @@ public class GlobalList {
     private String listCreatedAt;
 
     @Property(nameInDb = "list_updated_at")
+
     private String listUpdatedAt;
 
     @ToMany(referencedJoinProperty = "globalListId")
@@ -113,6 +114,11 @@ public class GlobalList {
         }
         return supermarketLists;
     }
+
+    public void setSupermarketLists(List<SupermarketList> supermarketLists) {
+        this.supermarketLists = supermarketLists;
+    }
+
 
     /** Resets a to-many relationship, making the next get call to query for a fresh result. */
     @Generated(hash = 500614455)

@@ -1,7 +1,7 @@
-package com.pablo.ecocesta;
+package com.pablo.ecocesta.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.pablo.ecocesta.application.MyApplication;

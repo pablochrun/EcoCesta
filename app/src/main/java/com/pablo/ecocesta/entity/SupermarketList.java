@@ -2,10 +2,9 @@ package com.pablo.ecocesta.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.JoinEntity;
 import org.greenrobot.greendao.annotation.Property;
-import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.annotation.ToOne;
+
+import java.util.Date;
 
 /**
  * Created by irene on 15/10/2017.
@@ -25,21 +24,40 @@ public class SupermarketList {
     @Property(nameInDb = "list_updated_at")
     private String listUpdatedAt;
 
+    @Property(nameInDb = "total_price")
+    private double totalPrice;
+
+    @Property(nameInDb = "total_discount")
+    private double totalDiscount;
+
+    @Property(nameInDb = "list_completed")
+    private boolean listCompleted;
+
+    @Property(nameInDb = "purchase_date")
+    private Date purchaseDate;
+
+    @Property(nameInDb = "limit_date")
+    private Date limitDate;
+
     private long globalListId;
 
+   // private List<Supermarket> supermarkets;
 
-    @Generated(hash = 1566618427)
-    public SupermarketList(Long id, String list_name, String listCreatedAt,
-            String listUpdatedAt, long globalListId) {
-        this.id = id;
-        this.list_name = list_name;
-        this.listCreatedAt = listCreatedAt;
-        this.listUpdatedAt = listUpdatedAt;
-        this.globalListId = globalListId;
+    //@ToMany(referencedJoinProperty = "supermarketListId")
+    private ProductList productsList;
+
+    public boolean isListCompleted() {
+        return listCompleted;
     }
 
-    @Generated(hash = 97964699)
-    public SupermarketList() {
+    /*
+    public void setSupermarkets(List<Supermarket> supermarkets) {
+        this.supermarkets = supermarkets;
+    }
+    */
+
+    public void setProductsList(ProductList productsList) {
+        this.productsList = productsList;
     }
 
     public Long getId() {
@@ -79,5 +97,46 @@ public class SupermarketList {
     public void setGlobalListId(long globalListId) {
         this.globalListId = globalListId;
     }
+
+    public double getTotalPrice() {
+        return this.totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public double getTotalDiscount() {
+        return this.totalDiscount;
+    }
+
+    public void setTotalDiscount(double totalDiscount) {
+        this.totalDiscount = totalDiscount;
+    }
+
+    public boolean getListCompleted() {
+        return this.listCompleted;
+    }
+
+    public void setListCompleted(boolean listCompleted) {
+        this.listCompleted = listCompleted;
+    }
+
+    public Date getPurchaseDate() {
+        return this.purchaseDate;
+    }
+
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public Date getLimitDate() {
+        return this.limitDate;
+    }
+
+    public void setLimitDate(Date limitDate) {
+        this.limitDate = limitDate;
+    }
+
 
 }

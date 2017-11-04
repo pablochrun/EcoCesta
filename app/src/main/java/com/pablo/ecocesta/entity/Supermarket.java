@@ -2,6 +2,7 @@ package com.pablo.ecocesta.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
 
@@ -15,6 +16,7 @@ public class Supermarket {
     private Long id;
 
     @Property(nameInDb = "name")
+    @NotNull
     private String name;
 
     @Property(nameInDb = "latitude")

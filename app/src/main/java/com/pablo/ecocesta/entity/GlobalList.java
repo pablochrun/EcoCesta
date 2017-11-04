@@ -29,7 +29,7 @@ public class GlobalList {
     private String listUpdatedAt;
 
     @ToMany(referencedJoinProperty = "globalListId")
-    private List<SupermarketList> supermarketLists;
+    private List<ProductList> productLists;
 
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
@@ -84,47 +84,16 @@ public class GlobalList {
         this.listUpdatedAt = listUpdatedAt;
     }
 
-    public List<SupermarketList> getSupermarketList() {
-        return supermarketLists;
+    public List<ProductList> getProductList() {
+        return productLists;
     }
 
-    public void setSupermarketList(List<SupermarketList> supermarketLists) {
-        this.supermarketLists = supermarketLists;
-    }
-
-    /**
-     * To-many relationship, resolved on first access (and after reset).
-     * Changes to to-many relations are not persisted, make changes to the target entity.
-     */
-    @Generated(hash = 127974593)
-    public List<SupermarketList> getSupermarketLists() {
-        if (supermarketLists == null) {
-            final DaoSession daoSession = this.daoSession;
-            if (daoSession == null) {
-                throw new DaoException("Entity is detached from DAO context");
-            }
-            SupermarketListDao targetDao = daoSession.getSupermarketListDao();
-            List<SupermarketList> supermarketListsNew = targetDao
-                    ._queryGlobalList_SupermarketLists(id);
-            synchronized (this) {
-                if (supermarketLists == null) {
-                    supermarketLists = supermarketListsNew;
-                }
-            }
-        }
-        return supermarketLists;
-    }
-
-    public void setSupermarketLists(List<SupermarketList> supermarketLists) {
-        this.supermarketLists = supermarketLists;
+    public void setProductList(List<ProductList> productLists) {
+        this.productLists = productLists;
     }
 
 
-    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
-    @Generated(hash = 500614455)
-    public synchronized void resetSupermarketLists() {
-        supermarketLists = null;
-    }
+
 
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#delete(Object)}.
@@ -160,6 +129,34 @@ public class GlobalList {
             throw new DaoException("Entity is detached from DAO context");
         }
         myDao.update(this);
+    }
+
+    /**
+     * To-many relationship, resolved on first access (and after reset).
+     * Changes to to-many relations are not persisted, make changes to the target entity.
+     */
+    @Generated(hash = 400714658)
+    public List<ProductList> getProductLists() {
+        if (productLists == null) {
+            final DaoSession daoSession = this.daoSession;
+            if (daoSession == null) {
+                throw new DaoException("Entity is detached from DAO context");
+            }
+            ProductListDao targetDao = daoSession.getProductListDao();
+            List<ProductList> productListsNew = targetDao._queryGlobalList_ProductLists(id);
+            synchronized (this) {
+                if (productLists == null) {
+                    productLists = productListsNew;
+                }
+            }
+        }
+        return productLists;
+    }
+
+    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
+    @Generated(hash = 1629923042)
+    public synchronized void resetProductLists() {
+        productLists = null;
     }
 
     /** called by internal mechanisms, do not call yourself. */

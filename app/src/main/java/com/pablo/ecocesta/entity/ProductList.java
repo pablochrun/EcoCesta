@@ -5,9 +5,12 @@ import com.pablo.ecocesta.utils.Measure;
 
 import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.ToOne;
+import org.greenrobot.greendao.DaoException;
+import org.greenrobot.greendao.annotation.NotNull;
 
 /**
  * Created by irene on 29/10/2017.
@@ -17,8 +20,6 @@ public class ProductList {
 
     @Id(autoincrement = true)
     private Long id;
-
-    private long supermarketListId;
 
     @Property(nameInDb = "units")
     private int units;
@@ -42,12 +43,29 @@ public class ProductList {
     @Property(nameInDb = "kg_price")
     private double priceKg;
 
-    @Generated(hash = 171793706)
-    public ProductList(Long id, long supermarketListId, int units, double unitPrice,
-            double totalPrice, double totalDiscount, boolean selected,
-            Measure measure, double priceKg) {
+    private long globalListId;
+
+    private long supermarketId;
+
+    @ToOne(joinProperty = "supermarketId")
+    private Supermarket supermarket;
+
+    /** Used to resolve relations */
+    @Generated(hash = 2040040024)
+    private transient DaoSession daoSession;
+
+    /** Used for active entity operations. */
+    @Generated(hash = 1190443415)
+    private transient ProductListDao myDao;
+
+    @Generated(hash = 627365598)
+    private transient Long supermarket__resolvedKey;
+
+    @Generated(hash = 496405407)
+    public ProductList(Long id, int units, double unitPrice, double totalPrice,
+            double totalDiscount, boolean selected, Measure measure, double priceKg,
+            long globalListId, long supermarketId) {
         this.id = id;
-        this.supermarketListId = supermarketListId;
         this.units = units;
         this.unitPrice = unitPrice;
         this.totalPrice = totalPrice;
@@ -55,6 +73,8 @@ public class ProductList {
         this.selected = selected;
         this.measure = measure;
         this.priceKg = priceKg;
+        this.globalListId = globalListId;
+        this.supermarketId = supermarketId;
     }
 
     @Generated(hash = 1565041128)
@@ -67,14 +87,6 @@ public class ProductList {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public long getSupermarketListId() {
-        return supermarketListId;
-    }
-
-    public void setSupermarketListId(long supermarketListId) {
-        this.supermarketListId = supermarketListId;
     }
 
     public int getUnits() {
@@ -135,5 +147,99 @@ public class ProductList {
 
     public boolean getSelected() {
         return this.selected;
+    }
+
+    public long getGlobalListId() {
+        return globalListId;
+    }
+
+    public void setGlobalListId(long globalListId) {
+        this.globalListId = globalListId;
+    }
+    
+
+    public long getSupermarketId() {
+        return supermarketId;
+    }
+
+    public void setSupermarketId(long supermarketId) {
+        this.supermarketId = supermarketId;
+    }
+
+    /** To-one relationship, resolved on first access. */
+    @Generated(hash = 1709373299)
+    public Supermarket getSupermarket() {
+        long __key = this.supermarketId;
+        if (supermarket__resolvedKey == null
+                || !supermarket__resolvedKey.equals(__key)) {
+            final DaoSession daoSession = this.daoSession;
+            if (daoSession == null) {
+                throw new DaoException("Entity is detached from DAO context");
+            }
+            SupermarketDao targetDao = daoSession.getSupermarketDao();
+            Supermarket supermarketNew = targetDao.load(__key);
+            synchronized (this) {
+                supermarket = supermarketNew;
+                supermarket__resolvedKey = __key;
+            }
+        }
+        return supermarket;
+    }
+
+    /** called by internal mechanisms, do not call yourself. */
+    @Generated(hash = 817255004)
+    public void setSupermarket(@NotNull Supermarket supermarket) {
+        if (supermarket == null) {
+            throw new DaoException(
+                    "To-one property 'supermarketId' has not-null constraint; cannot set to-one to null");
+        }
+        synchronized (this) {
+            this.supermarket = supermarket;
+            supermarketId = supermarket.getId();
+            supermarket__resolvedKey = supermarketId;
+        }
+    }
+
+    /**
+     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#delete(Object)}.
+     * Entity must attached to an entity context.
+     */
+    @Generated(hash = 128553479)
+    public void delete() {
+        if (myDao == null) {
+            throw new DaoException("Entity is detached from DAO context");
+        }
+        myDao.delete(this);
+    }
+
+    /**
+     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
+     * Entity must attached to an entity context.
+     */
+    @Generated(hash = 1942392019)
+    public void refresh() {
+        if (myDao == null) {
+            throw new DaoException("Entity is detached from DAO context");
+        }
+        myDao.refresh(this);
+    }
+
+    /**
+     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#update(Object)}.
+     * Entity must attached to an entity context.
+     */
+    @Generated(hash = 713229351)
+    public void update() {
+        if (myDao == null) {
+            throw new DaoException("Entity is detached from DAO context");
+        }
+        myDao.update(this);
+    }
+
+    /** called by internal mechanisms, do not call yourself. */
+    @Generated(hash = 629944583)
+    public void __setDaoSession(DaoSession daoSession) {
+        this.daoSession = daoSession;
+        myDao = daoSession != null ? daoSession.getProductListDao() : null;
     }
 }

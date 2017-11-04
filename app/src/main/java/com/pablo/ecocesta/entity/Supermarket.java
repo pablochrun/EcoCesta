@@ -3,6 +3,7 @@ package com.pablo.ecocesta.entity;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by irene on 30/10/2017.
@@ -30,6 +31,22 @@ public class Supermarket {
 
     @Property(nameInDb = "telephone")
     private String telephone;
+
+    @Generated(hash = 1303935195)
+    public Supermarket(Long id, String name, float latitude, float longitude,
+            String address, int codePostal, String telephone) {
+        this.id = id;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
+        this.codePostal = codePostal;
+        this.telephone = telephone;
+    }
+
+    @Generated(hash = 957046942)
+    public Supermarket() {
+    }
 
     public Long getId() {
         return id;

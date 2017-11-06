@@ -1,0 +1,40 @@
+{ "products" :
+  [
+      {
+        "name": "ternera",
+        "category": "carne"
+      },
+      {
+        "name": "cerdo",
+        "category": "carne"
+      },
+      {
+        "name": "pollo",
+        "category": "carne"
+      },
+      {
+        "name": "lubina",
+        "category": "pescado"
+      },
+      {
+        "name": "langostinos",
+        "category": "pescado"
+      },
+      {
+        "name": "atun",
+        "category": "pescado"
+      },
+      {
+        "name": "leche desnatada",
+        "category": "lacteos"
+      },
+      {
+        "name": "leche semidesnatada",
+        "category": "pescado"
+      },
+      {
+        "name": "leche entera",
+        "category": "pescado"
+      }
+  ]
+}

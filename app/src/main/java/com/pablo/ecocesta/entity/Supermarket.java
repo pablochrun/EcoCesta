@@ -34,9 +34,9 @@ public class Supermarket {
     @Property(nameInDb = "telephone")
     private String telephone;
 
-    @Generated(hash = 1303935195)
-    public Supermarket(Long id, String name, float latitude, float longitude,
-            String address, int codePostal, String telephone) {
+    @Generated(hash = 498001171)
+    public Supermarket(Long id, @NotNull String name, float latitude,
+            float longitude, String address, int codePostal, String telephone) {
         this.id = id;
         this.name = name;
         this.latitude = latitude;

@@ -35,8 +35,8 @@ public class Product {
     @Generated(hash = 694336451)
     private transient ProductDao myDao;
 
-    @Generated(hash = 1634527876)
-    public Product(Long id, String name, Long categoryId) {
+    @Generated(hash = 1250367371)
+    public Product(Long id, @NotNull String name, Long categoryId) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
